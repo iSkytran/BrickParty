@@ -9,7 +9,7 @@ import android.view.ViewGroup
 /**
  * Class representing a page fragment.
  */
-class PageFragment : Fragment() {
+class YourEventsFragment : Fragment() {
     /**
      * Called when the page is created.
      */
@@ -17,5 +17,5 @@ class PageFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View = inflater.inflate(R.layout.fragment_page, container, false)
+    ): View = inflater.inflate(R.layout.fragment_your_events, container, false)
 }

@@ -66,6 +66,18 @@ class MainActivity : FragmentActivity() {
         /**
          * Creates a fragment for the current page.
          */
-        override fun createFragment(position: Int): Fragment = PageFragment()
+        override fun createFragment(position: Int): Fragment {
+            return when (position) {
+                1 -> {
+                    YourEventsFragment()
+                }
+                2 -> {
+                    SettingsFragment()
+                }
+                else -> {
+                    EventsFragment()
+                }
+            }
+        }
     }
 }
