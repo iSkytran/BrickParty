@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
  * Class representing a page fragment.
  */
 class EventsFragment : Fragment() {
+
     /**
      * Called when the page is created.
      */
@@ -20,9 +21,10 @@ class EventsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val recyclerView: RecyclerView? = container?.findViewById<RecyclerView>(R.id.recyclerView)
-        recyclerView?.layoutManager = LinearLayoutManager(context)
-        recyclerView?.adapter = RecyclerAdapter(TestEvents.items)
-        return inflater.inflate(R.layout.fragment_events, container, false)
+        val fragmentView = inflater.inflate(R.layout.fragment_events, container, false)
+        val recyclerView: RecyclerView = fragmentView.findViewById(R.id.recyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(activity)
+        recyclerView.adapter = RecyclerAdapter(TestEvents.items)
+        return fragmentView
     }
 }
