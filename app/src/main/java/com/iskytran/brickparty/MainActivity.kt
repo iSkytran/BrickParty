@@ -1,6 +1,8 @@
 package com.iskytran.brickparty
 
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
@@ -17,7 +19,7 @@ private val TAB_NAMES = arrayOf("Events", "Your Events", "Settings")
 /**
  * Main class called at runtime.
  */
-class MainActivity : FragmentActivity() {
+class MainActivity : AppCompatActivity() {
 
     /** Variable to hold the viewPager. */
     private lateinit var viewPager: ViewPager2
@@ -29,8 +31,11 @@ class MainActivity : FragmentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // Configure app bar.
+        supportActionBar?.hide()
+
         // Get the viewPager.
-        viewPager = findViewById<ViewPager2>(R.id.pager)
+        viewPager = findViewById(R.id.pager)
 
         // Create a new PageAdapter object and assign it to the viewPager.
         val pagerAdapter = PageAdapter(this)

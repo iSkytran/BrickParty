@@ -3,10 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="vertical" />
+        android:layout_height="wrap_content"
+        android:text="Event Item"
+        android:textAlignment="center"
+        android:textSize="36sp"
+        android:textStyle="bold" />
 
 </FrameLayout>
