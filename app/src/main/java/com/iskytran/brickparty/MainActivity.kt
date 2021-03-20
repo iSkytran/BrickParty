@@ -5,17 +5,21 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 
+/** Number of pages. */
 private const val NUM_PAGES = 3
+
+/** Tab names. */
+private val TAB_NAMES = arrayOf("Events", "Your Events", "Settings")
 
 /**
  * Main class called at runtime.
  */
 class MainActivity : FragmentActivity() {
 
-    /**
-     * Variable to hold the viewPager.
-     */
+    /** Variable to hold the viewPager. */
     private lateinit var viewPager: ViewPager2
 
     /**
@@ -31,6 +35,12 @@ class MainActivity : FragmentActivity() {
         // Create a new PageAdapter object and assign it to the viewPager.
         val pagerAdapter = PageAdapter(this)
         viewPager.adapter = pagerAdapter
+
+        // Attach the TabLayout to the ViewPager
+        val tabLayout = findViewById<TabLayout>(R.id.tabLayout)
+        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+            tab.text = TAB_NAMES[position]
+        }.attach()
     }
 
     /**
