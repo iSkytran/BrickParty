@@ -18,7 +18,7 @@ Get involved on campus! BrickParty is for planning fun in-person, or virtual, ac
 
 ### Sign in with a test account:
 
-Test email: test@iskytran.com
+Test email: test@iskytran.com\
 Test password: testPassword
 
 ## Video Demo
