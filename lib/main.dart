@@ -1,54 +1,44 @@
-import 'package:brick_party/events.dart';
-import 'package:brick_party/settings.dart';
-import 'package:brick_party/your_events.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:brick_party/add_page.dart';
+import 'package:brick_party/home_page.dart';
+import 'package:brick_party/loading.dart';
+import 'package:brick_party/login_page.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
   runApp(App());
 }
 
 class App extends StatelessWidget {
+  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'BrickParty',
-      theme: ThemeData(
-        primaryColor: Colors.red[800],
-      ),
-      home: HomePage(title: 'BrickParty'),
-    );
-  }
-}
-
-class HomePage extends StatefulWidget {
-  HomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 3,
-      child: Scaffold(
-        appBar: AppBar(
-            title: Text(widget.title),
-            bottom: TabBar(
-              tabs: [
-                Tab(icon: Icon(Icons.directions_car)),
-                Tab(icon: Icon(Icons.directions_transit)),
-                Tab(icon: Icon(Icons.directions_bike)),
-              ],
-            )),
-        body: TabBarView(
-          children: [Events(), YourEvents(), Settings()],
-        ),
-      ),
-    );
+    return FutureBuilder(
+        future: _initialization,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            return MaterialApp(
+                title: 'BrickParty',
+                theme: ThemeData(
+                  primaryColor: Colors.red[800],
+                  floatingActionButtonTheme: FloatingActionButtonThemeData(
+                      backgroundColor: Colors.red[800]),
+                  textButtonTheme: TextButtonThemeData(
+                      style: TextButton.styleFrom(
+                          primary: Colors.white,
+                          backgroundColor: Colors.red[800])),
+                ),
+                debugShowCheckedModeBanner: false,
+                routes: <String, WidgetBuilder>{
+                  '/': (context) => LoginPage(),
+                  '/home': (context) => HomePage(),
+                  '/add_event': (context) => AddPage(),
+                });
+          }
+          return Loading();
+        });
   }
 }

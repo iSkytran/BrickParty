@@ -1,4 +1,4 @@
-package com.example.brick_party
+package com.iskytran.brickparty
 
 import io.flutter.embedding.android.FlutterActivity
 

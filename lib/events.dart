@@ -1,4 +1,5 @@
 import 'package:brick_party/event_item.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class Events extends StatefulWidget {
@@ -7,22 +8,37 @@ class Events extends StatefulWidget {
 }
 
 class _EventsState extends State<Events> {
-  final _eventItems = <EventItem>[];
-
-  void _addEvent() {
-    setState(() {
-      _eventItems.add(EventItem());
-    });
+  Future<void> _addEvent() async {
+    await Navigator.of(context).pushNamed('/add_event');
   }
 
   @override
   Widget build(BuildContext context) {
+    CollectionReference events =
+        FirebaseFirestore.instance.collection('events');
+
     return Stack(children: [
-      ListView.builder(
-          padding: EdgeInsets.all(4.0),
-          itemCount: _eventItems.length,
-          itemBuilder: (context, i) {
-            return _eventItems[i];
+      StreamBuilder<QuerySnapshot>(
+          stream: events.snapshots(),
+          builder:
+              (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+            if (snapshot.hasError) {
+              return Text("Something went wrong.");
+            }
+
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Text("Loading...");
+            }
+            return ListView(
+              children: snapshot.data.docs.map((DocumentSnapshot document) {
+                return EventItem(
+                    document.reference.id,
+                    document.data()['title'],
+                    document.data()['description'],
+                    document.data()['organizer'],
+                    document.data()['participants']);
+              }).toList(),
+            );
           }),
       Positioned(
           right: 30.0,
@@ -30,7 +46,6 @@ class _EventsState extends State<Events> {
           child: FloatingActionButton(
             child: Icon(Icons.add),
             onPressed: _addEvent,
-            backgroundColor: Colors.red[800],
           )),
     ]);
   }

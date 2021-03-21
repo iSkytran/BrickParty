@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.brick_party">
+    package="com.iskytran.brickparty">
    <application
         android:label="brick_party"
         android:icon="@mipmap/ic_launcher">
