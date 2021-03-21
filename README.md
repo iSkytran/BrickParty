@@ -6,7 +6,7 @@ Ethan Tran and Grady Fort
 
 ### Idea
 
-Get involved on campus! BrickParty is for planning fun in-person, or virtual, activities for college students to share events on NC States campus. Go Pack!!
+Get involved on campus! BrickParty is for planning fun in-person, or virtual, activities for college students to share events with NC State. Go Pack!!
 
 ## Functions
 
