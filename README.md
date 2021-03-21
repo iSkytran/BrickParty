@@ -1,19 +1,16 @@
-# BrickParty
-### Built by
-Ethan Tran and Grady Fort
+# brick_party
 
-### Idea 
-Our app is an app for planning fun activities for college students to share events on NC States campus.
+A new Flutter project.
 
-## Future Functions
-* Simplifies scheduling by giving student clubs and organizations a platform to post events
-* When a user registers for an event, they have the option to sync the event with their Google Calendar
-* The user will also get a reminder email the day before the event
-* 
+## Getting Started
 
-## Pages
-List
-    (The main page of the app that has a banner image of the club, a location, a date, and a number of people of people who are attending)
-        
-Your Events
-    (List of events that the user has registered for)
+This project is a starting point for a Flutter application.
+
+A few resources to get you started if this is your first Flutter project:
+
+- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+
+For help getting started with Flutter, view our
+[online documentation](https://flutter.dev/docs), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.

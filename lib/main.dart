@@ -1,6 +1,7 @@
 import 'package:brick_party/events.dart';
 import 'package:brick_party/settings.dart';
 import 'package:brick_party/your_events.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 void main() {
