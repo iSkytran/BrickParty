@@ -16,6 +16,10 @@ Get involved on campus! BrickParty is for planning fun in-person, or virtual, ac
  
 ## How to use BrickParty
 
+### Download the APK
+
+The APKs can be found at [this link.](https://github.com/iSkytran/BrickParty/releases)
+
 ### Sign in with a test account:
 
 Test email: test@iskytran.com\
